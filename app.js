@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/sendWeatherAPI', (req, res) => {
     var options = {
         'method': 'GET',
-        'url': 'http://dataservice.accuweather.com/currentconditions/v1/locationKey?locationKey=327328&apikey=7z9dVqvVjYDVQAA607XgNnwHAvsSliIz',
+        'url': 'http://dataservice.accuweather.com/currentconditions/v1/locationKey?locationKey=115295&apikey=cdf0KORpdizmmWToY7AkI9hA0r6eQo92',
         'headers': {
         }
       };
