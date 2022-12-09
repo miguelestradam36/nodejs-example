@@ -1,6 +1,12 @@
+/*
+Needed imports
+*/
 const request = require('request');
 const express = require('express');
 const path = require('path');
+/*
+Creating expresss object and setting port constant variable
+*/
 const app = express()
 const port = 3000
 
@@ -8,11 +14,16 @@ const port = 3000
 app.engine('pug', require('pug').__express)
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
+/*
+JSON format used for request and url settings
+*/
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-
+/*
+Creation of request to dataservice accuweather
+---
+GET request
+*/
 app.get('/sendWeatherAPI', (req, res) => {
     var options = {
         'method': 'GET',
@@ -20,6 +31,11 @@ app.get('/sendWeatherAPI', (req, res) => {
         'headers': {
         }
       };
+    /*
+    Getting values from GET request
+    ---
+    defining varaibles and obtaining data from JSON.
+    */
     request(options, function (error, response) {
         if (error) throw new Error(error);
         console.log(response.body);
@@ -33,14 +49,19 @@ app.get('/sendWeatherAPI', (req, res) => {
         res.render('weather', { title: 'Weather App', weather: weather, temp: temp, degrees: degrees, time: time })
       });
 })
-
+/*
+Application
+---
+Define view and log results into console
+*/
 app.get('/', (req, res) => {
     // var weather = "Partially Cloudy";
     //res.send(weather);
     res.render('index', { title: 'Weather App'})
-
   })
-  
+  /*
+  Logging information into console and generating URL
+  */
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
   })

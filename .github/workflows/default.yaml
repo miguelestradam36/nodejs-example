@@ -27,4 +27,4 @@ jobs:
       - run: npm install jest --save-dev
       - run: npm test
       - name: Run Node application
-        run: npm start server 8080
+        run: npm start
